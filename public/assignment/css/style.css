@@ -1,7 +1,30 @@
-input.form-control {
-    margin-bottom: 5px;
+/* BODY */
+body {
+    padding-top: 60px;
 }
 
-body {
-    padding-top: 36px;
+
+/* TOP NAVIGATION BAR */
+.navbar-default {
+    background-color: #3d96bd;
+}
+
+.navbar-default .navbar-brand {
+    color: aliceblue;
+}
+
+.navbar-header {
+     float: none;
+}
+
+.glyphicon {
+    color: aliceblue;
+    margin-right: 20px;
+}
+
+
+
+/* FORM */
+input.form-control {
+    margin-bottom: 5px;
 }
