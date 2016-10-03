@@ -1,12 +1,12 @@
 /* BODY */
 body {
-    padding-top: 60px;
+    padding-top: 50px;
+    padding-bottom: 60px;
 }
 
-
-/* TOP NAVIGATION BAR */
+/* NAVIGATION BAR */
 .navbar-default {
-    background-color: #3d96bd;
+    background-color: steelblue;
 }
 
 .navbar-default .navbar-brand {
@@ -17,14 +17,134 @@ body {
      float: none;
 }
 
+.navbar-text {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .glyphicon {
     color: aliceblue;
+}
+
+.glyphicon-chevron-left {
+    margin-left: 20px;
+}
+
+.glyphicon-ok {
     margin-right: 20px;
 }
 
+.glyphicon-plus{
+    margin-right: 20px;
+}
 
+.glyphicon-cog {
+    color: steelblue;
+}
+
+.glyphicon-menu-hamburger {
+    color: steelblue;
+}
+
+
+/* CONTAINER */
+.container {
+    padding-top: 10px;
+    width: 100%;
+}
+
+.left-pane {
+}
+
+.right-pane {
+}
 
 /* FORM */
 input.form-control {
     margin-bottom: 5px;
+}
+
+.divider {
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 25%;
+    height: 100%;
+    border-left: 0px;
+    border-right: 1px solid grey;
+    border-top: 0px;
+    border-bottom: 0px;
+    position: fixed;
+}
+
+
+/* TABLE */
+table#website-list {
+    width: 100%;
+}
+
+table#page-list {
+    width: 100%;
+}
+
+td, th {
+    padding: 10px;
+}
+
+/***/
+
+.topcorner{
+    position:absolute;
+    right:0;
+    top:10px;
+}
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: inherit;
+    background-color: #ffffff;
+    height: auto;
+}
+.blue-cog{
+    padding-right: 10px;
+}
+
+.parent {
+    position: relative;
+}
+
+.content {
+    /*position: absolute;*/
+    width: 80%;
+    height: auto;
+    z-index: 100;
+    background: #ffffff;
+    padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icons {
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 110;
+    right: 0px;
+    background: #ffffff;
+    top: 0px;
+    padding-right: 10px;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+
+.jumbotron p {
+    margin-bottom: 0px;
+}
+.widget-img{
+    text-align: center;
+    width: 80%;
 }
