@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Register</h1>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div ng-show="model.error2" class="alert alert-warning" role="alert">
+        {{model.error2}}
+    </div>
+
+    <div ng-show="model.error3" class="alert alert-warning" role="alert">
+        {{model.error3}}
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username *</label>
+            <input ng-model="user.username"
+                   type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="Alice1"/>
+
+            <label for="password">Password *</label>
+            <input ng-model="user.password"
+                   type="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="XYZ123"/>
+
+            <label for="verify_password">Verify Password *</label>
+            <input ng-model="user.password2"
+                   type="password"
+                   class="form-control"
+                   id="verify_password"
+                   placeholder="XYZ123"/>
+
+            <label for="first">First Name *</label>
+            <input ng-model="user.first"
+                   type="text"
+                   class="form-control"
+                   id="first"
+                   placeholder="Alice1"/>
+
+            <label for="last">Last Name</label>
+            <input ng-model="user.last"
+                   type="text"
+                   class="form-control"
+                   id="last"
+                   placeholder="Alice1"/>
+
+            <a ng-click="model.register(user)" class="btn btn-primary btn-block">
+                Register
+            </a>
+            <a class="btn btn-danger btn-block" href="#/login">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>

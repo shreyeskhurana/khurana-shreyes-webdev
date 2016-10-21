@@ -4,6 +4,10 @@ body {
     padding-bottom: 60px;
 }
 
+.row {
+    width: 100%;
+}
+
 /* NAVIGATION BAR */
 .navbar-default {
     background-color: steelblue;
@@ -14,7 +18,7 @@ body {
 }
 
 .navbar-header {
-     float: none;
+    float: none;
 }
 
 .navbar-text {
@@ -75,6 +79,7 @@ input.form-control {
     position: fixed;
 }
 
+
 /* TABLE */
 table#website-list {
     width: 100%;
@@ -86,4 +91,54 @@ table#page-list {
 
 td, th {
     padding: 10px;
+}
+
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: inherit;
+    background-color: #ffffff;
+    height: auto;
+}
+
+.jumbotron p {
+    margin-bottom: 0px;
+}
+
+.outer {
+    position: relative;
+    width: 100%;
+}
+
+.inner {
+    width: 80%;
+    height: auto;
+    z-index: 100;
+    background: #ffffff;
+    padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.option {
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 110;
+    right: 0px;
+    background: #ffffff;
+    top: 0px;
+    padding-right: 10px;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+
+.widget-img{
+    text-align: center;
+    width: 80%;
 }
