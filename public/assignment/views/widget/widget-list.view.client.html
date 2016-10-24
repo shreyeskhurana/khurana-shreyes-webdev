@@ -37,8 +37,8 @@
             <img ng-src="{{widget.url}}" width="{{widget.width}}">
         </div>
         <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)"></div>
-        <div ng-switch-when="YOUTUBE">
-            <iframe width="{{widget.width}}" height="{{widget.height}}"
+        <div ng-switch-when="YOUTUBE" class="embed-responsive embed-responsive-4by3">
+            <iframe class="embed-responsive-item" width="{{widget.width}}" height="{{widget.height}}"
                     ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
                     frameborder="0" allowfullscreen></iframe>
         </div>
