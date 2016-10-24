@@ -1,8 +1,10 @@
-# web-dev-template
+CS 5610 Web Development
+Northeastern University
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+1. Assignments
+    i. User Interface Development
+   ii. Client Side Development
+
+2. Project
+
+Shreyes Khurana
