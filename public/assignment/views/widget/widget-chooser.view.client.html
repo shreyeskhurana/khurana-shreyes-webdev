@@ -3,34 +3,30 @@
         <div class="navbar-header">
             <div class="container-fluid">
                 <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"
-                       class="navbar-link">
+                    <a href="#/user/456/website/456/page/321/widget" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
                 <a class="navbar-brand">
-                    Edit Widget
+                    Choose Widget
                 </a>
-                <p class="navbar-text pull-right">
-                    <a ng-click="model.createWidget()" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </p>
             </div>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <form>
-        <div ng-include="'views/widget/widget-'+model.wgType+'-editor.html'"></div>
-    </form>
+    <li ng-repeat="widgetType in model.widgetTypes" class="list-group-item">
+        <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new/{{widgetType.name}}">
+            {{widgetType.name}}
+        </a>
+    </li>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#/user/{{model.uid}}">
+            <a href="#/user/456">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

@@ -22,7 +22,8 @@
 
 <div class="container">
     <form>
-        <div ng-include="'views/widget/widget-'+model.widget.widgetType+'.view.client.html'"></div>
+        <div ng-include="'views/widget/widget-'+model.widget.widgetType+'-editor.html'"></div>
+        <br>
         <a ng-click="model.removeWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
     </form>
 </div>

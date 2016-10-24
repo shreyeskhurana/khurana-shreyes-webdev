@@ -18,6 +18,7 @@ body {
 }
 
 .navbar-text {
+    float: left;
     margin-left: 0px;
     margin-right: 0px;
 }
@@ -52,12 +53,6 @@ body {
     width: 100%;
 }
 
-.left-pane {
-}
-
-.right-pane {
-}
-
 /* FORM */
 input.form-control {
     margin-bottom: 5px;
@@ -76,14 +71,15 @@ input.form-control {
 }
 
 /* TABLE */
-table#website-list {
-    width: 100%;
+.parent {
+    position: relative;
 }
 
-table#page-list {
-    width: 100%;
-}
+.icons {
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    right: 0px;
+    top: 0px;
 
-td, th {
-    padding: 10px;
 }
