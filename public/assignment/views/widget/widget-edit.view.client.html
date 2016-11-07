@@ -3,7 +3,8 @@
         <div class="navbar-header">
             <div class="container-fluid">
                 <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
+                       class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
@@ -11,7 +12,7 @@
                     Edit Widget
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/" class="navbar-link">
+                    <a ng-click="model.updateWidget()" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </p>
@@ -22,16 +23,16 @@
 
 <div class="container">
     <form>
-        <div ng-include="'views/widget/widget-'+model.widget.widgetType+'-editor.html'"></div>
+        <div ng-switch="model.type" ng-include="'views/widget/widget-'+ model.type +'-editor.html'"></div>
         <br>
-        <a ng-click="model.removeWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
+        <a ng-click="model.removeWidget()" class="btn btn-danger btn-block">Delete</a>
     </form>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#/user/{{model.uid}}">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

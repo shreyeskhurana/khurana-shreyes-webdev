@@ -11,21 +11,33 @@
             vm.error = null;
             vm.error2 = null;
             vm.error3 = null;
-
-
-            var user = UserService.findUsername(newUser.username);
-
+            //Also handle null condition here
+                //i.e. if nthing is entered but register is pressed
             if (newUser.password != newUser.password2) {
                 vm.error2 = "Passwords don't match!";
             }
-            else if (user != null) {
-                vm.error = "Username already exists!";
-            }
             else {
-                newUser._id = ((new Date()).getTime() % 1000).toString();
-                UserService.addUser(newUser);
-                $location.url("/user/" + newUser._id);
+                UserService
+                    .findUsername(newUser.username)
+                    .success(function(user) {
+                        if (user != "0") {
+                            vm.error = "Username already exists!";
+                        }
+                        else {
+                            newUser._id = ((new Date()).getTime() % 1000).toString();
+                            UserService
+                                .createUser(newUser)
+                                .success(function() {
+                                    $location.url("/user/" + newUser._id);
+                                })
+                                .error(function(error) {
+                                });
+                        }
+                    })
+                    .error(function(error) {
+                    });
             }
+
         }
     }
 })();

@@ -3,13 +3,13 @@
         <div class="navbar-header">
             <div class="container-fluid">
                 <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
                 <a class="navbar-brand">
-                    Edit Widget
+                    New Widget
                 </a>
                 <p class="navbar-text pull-right">
                     <a ng-click="model.createWidget()" class="navbar-link">
@@ -30,7 +30,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#/user/{{model.uid}}">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

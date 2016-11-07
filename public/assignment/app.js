@@ -3,6 +3,5 @@
  */
 (function() {
     angular //a top level global variable
-
-        .module('WebAppMaker', ['ngRoute']);
+        .module('WebAppMaker', ['ngRoute', 'utilities']);
 })();

@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <div class="container-fluid">
                 <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page"
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
@@ -12,7 +12,7 @@
                     Widgets
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
@@ -22,7 +22,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div sortable class="container">
     <div class="parent" ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" align="center">
         <div ng-switch-when="HEADER" ng-switch="widget.size">
             <h1 ng-switch-when="1">{{widget.text}}</h1>
@@ -43,7 +43,7 @@
                     frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="icons">
-            <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}"
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
                class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
@@ -56,21 +56,21 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-            <div class="navbar-text col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a>
-                    <span class="glyphicon glyphicon-eye-open"></span>
-                </a>
-            </div>
-            <div class="navbar-text col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a>
-                    <span class="glyphicon glyphicon-play"></span>
-                </a>
-            </div>
-            <div class="navbar-text pull-right">
-                <a href="#/user/{{model.uid}}">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+        <div class="navbar-text col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+            <a>
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
         </div>
+        <div class="navbar-text col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+            <a>
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
     </div>
 </nav>

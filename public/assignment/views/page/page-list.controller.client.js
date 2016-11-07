@@ -10,7 +10,13 @@
         vm.websiteId = $routeParams['wid'];
 
         function init() {
-            vm.pages = PageService.findPagesForWebsite(vm.websiteId);
+            PageService
+                .findPagesForWebsite(vm.userId, vm.websiteId)
+                .success(function (pages) {
+                    vm.pages = pages;
+                })
+                .error(function () {
+                })
         }
         init();
     }

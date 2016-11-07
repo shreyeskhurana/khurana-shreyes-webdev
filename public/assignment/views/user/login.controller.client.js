@@ -8,13 +8,18 @@
         vm.login = login;
 
         function login(username, password) {
-            var user = UserService.findUserByCredentials(username, password);
+            var promise = UserService.findUserByCredentials(username, password);
 
-            if(user === null) {
-                vm.error = "Username or Password is incorrect";
-            } else {
-                $location.url("/user/" + user._id);
-            }
+            promise
+                .success(function(user) {
+                    if(user === "0") {
+                        vm.error = "Username or Password is incorrect";
+                    } else {
+                        $location.url("/user/" + user._id);
+                    }
+                })
+                .error(function(error) {
+                });
         }
     }
 })();

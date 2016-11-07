@@ -5,16 +5,21 @@
 
     function WidgetListController($routeParams, WidgetService, $sce) {
         var vm = this;
-        vm.uid = $routeParams.uid;
-        vm.wid = $routeParams.wid;
-        vm.pid = $routeParams.pid;
-        vm.wgid = $routeParams.wgid;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
 
         vm.checkSafeHtml = checkSafeHtml;
         vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsForPage(vm.pid);
+            WidgetService
+                .findWidgetsForPage(vm.userId, vm.websiteId, vm.pageId)
+                .success(function (widgets) {
+                    vm.widgets = widgets;
+                })
+                .error(function () {
+                });
         }
         init();
 

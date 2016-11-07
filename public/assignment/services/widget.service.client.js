@@ -3,21 +3,7 @@
         .module("WebAppMaker")
         .factory("WidgetService", WidgetService);
 
-    function WidgetService() {
-        var widgets = [
-            { _id: "123", widgetType: "HEADER", pageId: "321", size: 2,      text: "GIZMODO"},
-            { _id: "234", widgetType: "HEADER", pageId: "321", size: 4,      text: "Lorem ipsum"},
-            { _id: "345", widgetType: "IMAGE",  pageId: "321", width: "40%",  url: "http://lorempixel.com/400/200/"},
-            { _id: "456", widgetType: "HTML",   pageId: "321",               text: "<p>Lorem ipsum</p>"},
-            { _id: "567", widgetType: "HEADER", pageId: "321", size: 4,      text: "Lorem ipsum"},
-            { _id: "678", widgetType: "YOUTUBE",pageId: "321", width: 560, height: 315,
-                                 url: "https://youtu.be/AM2Ivdi9c4E" },
-            { _id: "789", widgetType: "HTML",   pageId: "321",               text: "<p>Lorem ipsum</p>"}
-        ]
-
-        var widgetTypes = [
-            {name: "Header", _id: "1"}, {name: "Html", _id: "2"}, {name: "Image", _id: "3"}, {name: "YouTube", _id: "4"}
-        ]
+    function WidgetService($http) {
 
         /**
          * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
@@ -27,50 +13,52 @@
 
         var api = {
             findWidgetsForPage : findWidgetsForPage,
-            findWidgetById : findWidgetById,
             createWidget : createWidget,
+            findWidgetById : findWidgetById,
             updateWidget : updateWidget,
             removeWidget : removeWidget,
-            getWidgetTypes : getWidgetTypes
+            getWidgetTypes : getWidgetTypes,
+            sort : sort
         };
         return api;
 
-        function findWidgetsForPage(pid) {
-            return widgets;
+        function findWidgetsForPage(uid, wid, pid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget";
+            return $http.get(url);
         }
 
-        function findWidgetById(wgid) {
-            for(var w in widgets) {
-                if(widgets[w]._id == wgid) {
-                    return widgets[w];
-                }
-            }
-            return null;
+        function createWidget(widget, uid, wid, pid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget";
+            return $http.post(url, widget);
         }
 
-        function createWidget(widget) {
-            widgets.push(widget);
+        function findWidgetById(uid, wid, pid, wgid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+            return $http.get(url);
         }
 
-        function updateWidget(widget) {
-            for(var w in widgets) {
-                if(widgets[w]._id === widget._id) {
-                    widgets[p] = widget;
-                }
-            }
+        function updateWidget(widget, uid, wid, pid, wgid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+            return $http.put(url, widget);
         }
 
-        function removeWidget(wgid) {
-            for(var w in widgets) {
-                if(widgets[w]._id == wgid) {
-                    widgets.splice(w, 1);
-                }
-            }
-            return null;
+        function removeWidget(uid, wid, pid, wgid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+            return $http.delete(url);
         }
 
-        function getWidgetTypes() {
-            return widgetTypes;
+        function getWidgetTypes(uid, wid, pid) {
+            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget-types";
+            return $http.get(url);
+        }
+
+        function sort(start, end) {
+            var url = "/api/sort?start=START&end=END";
+            url = url
+                .replace("START", start)
+                .replace("END", end);
+
+            $http.put(url);
         }
     }
 })();

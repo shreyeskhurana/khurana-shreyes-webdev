@@ -8,23 +8,47 @@
 
         vm.userId = $routeParams['uid'];
         vm.websiteId = $routeParams['wid'];
+
         vm.updateWebsite = updateWebsite;
         vm.removeWebsite = removeWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesForUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService
+                .findWebsitesForUser(vm.userId)
+                .success(function (websites) {
+                    vm.websites = websites;
+                })
+                .error(function () {
+                });
+
+            WebsiteService
+                .findWebsiteById(vm.userId, vm.websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                })
+                .error(function () {
+                });
         }
         init();
 
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(website);
-            $location.url("/user/" + vm.userId + "/website");
+            WebsiteService
+                .updateWebsite(website, vm.userId, vm.websiteId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function () {
+                });
         }
 
-        function removeWebsite(wid) {
-            WebsiteService.removeWebsite(wid);
-            $location.url("/user/" + vm.userId + "/website");
+        function removeWebsite() {
+            WebsiteService
+                .removeWebsite(vm.userId, vm.websiteId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function () {
+                });
         }
     }
 

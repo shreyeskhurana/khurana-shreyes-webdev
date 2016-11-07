@@ -10,7 +10,13 @@
         vm.createWebsite = createWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesForUser(vm.userId);
+            WebsiteService
+                .findWebsitesForUser(vm.userId)
+                .success(function (websites) {
+                    vm.websites = websites;
+                })
+                .error(function () {
+                });
         }
         init();
 
@@ -18,10 +24,11 @@
             website._id = ((new Date()).getTime() % 1000).toString();
             website.uid = vm.userId;
 
-            WebsiteService.createWebsite(website);
-            vm.websites = WebsiteService.websites;
-
-            $location.url("/user/" + vm.userId + "/website");
+            WebsiteService
+                .createWebsite(website, vm.userId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website");
+                 })
         }
     }
 })();

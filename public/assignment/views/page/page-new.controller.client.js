@@ -8,10 +8,17 @@
 
         vm.userId = $routeParams['uid'];
         vm.websiteId = $routeParams['wid'];
+
         vm.createPage = createPage;
 
         function init() {
-            vm.pages = PageService.findPagesForWebsite(vm.websiteId);
+            PageService
+                .findPagesForWebsite(vm.userId, vm.websiteId)
+                .success(function (pages) {
+                    vm.pages = pages;
+                })
+                .error(function () {
+                })
         }
         init();
 
@@ -19,10 +26,13 @@
             page._id = ((new Date()).getTime() % 1000).toString();
             page.wid = vm.websiteId;
 
-            PageService.createPage(page);
-            vm.pages = PageService.pages;
-
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .createPage(page, vm.userId, vm.websiteId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+                });
         }
     }
 })();

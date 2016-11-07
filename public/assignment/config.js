@@ -74,7 +74,17 @@
             .when('/user/:uid/website/:wid/page/:pid/widget/:wgid', {
                 templateUrl: 'views/widget/widget-edit.view.client.html',
                 controller: 'WidgetEditController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    widget : ['$route','WidgetService', function ($route, WidgetService) {
+                        $routeParams = $route.current.params;
+                         return WidgetService
+                            .findWidgetById($routeParams.uid, $routeParams.wid, $routeParams.pid, $routeParams.wgid)
+                            .success(function (widget) {
+                                return widget;
+                            })
+                    }]
+                }
             })
             //-----------------------------------------------------------
 

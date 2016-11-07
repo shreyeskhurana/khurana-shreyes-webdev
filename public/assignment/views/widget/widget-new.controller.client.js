@@ -5,10 +5,12 @@
 
     function WidgetNewController($routeParams, $location, WidgetService) {
         var vm = this;
-        vm.uid = $routeParams.uid;
-        vm.wid = $routeParams.wid;
-        vm.pid = $routeParams.pid;
-        vm.wgType= $routeParams.type;
+        vm.flag = true;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
+        vm.wgType= $routeParams.type.toLowerCase();
+
         var type = vm.wgType.toUpperCase();
         vm.widget = {wgType: type, text:"Default text"};
 
@@ -19,10 +21,13 @@
             vm.widget._id = ((new Date()).getTime() % 1000).toString();
             vm.widget.pageId = vm.pid;
 
-            WidgetService.createWidget(vm.widget);
-            vm.widgets = WidgetService.widgets;
-
-            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+            WidgetService
+                .createWidget(vm.widget, vm.userId, vm.websiteId, vm.pageId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                })
+                .error(function () {
+                });
         }
     }
 })();

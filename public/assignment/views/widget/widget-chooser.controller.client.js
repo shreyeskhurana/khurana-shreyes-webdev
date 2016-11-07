@@ -6,12 +6,18 @@
     function WidgetChooserController($routeParams, WidgetService) {
         var vm = this;
 
-        vm.uid = $routeParams.uid;
-        vm.wid = $routeParams.wid;
-        vm.pid = $routeParams.pid;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
 
         function init() {
-            vm.widgetTypes = WidgetService.getWidgetTypes();
+            WidgetService
+                .getWidgetTypes(vm.userId, vm.websiteId, vm.pageId)
+                .success(function (widgetTypes) {
+                    vm.widgetTypes = widgetTypes;
+                })
+                .error(function () {
+                })
         }
         init();
     }

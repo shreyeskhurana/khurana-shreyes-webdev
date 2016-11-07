@@ -6,17 +6,23 @@
         </div>
         <div class="form-group">
             <label for="url">URL</label>
-            <input ng-model="model.widget.url" type="text" class="form-control" id="url" placeholder="https://flickr.com/.../xyz.jpeg"/>
+            <input ng-model="model.widget.url" type="text" class="form-control" id="url"
+                   placeholder="https://flickr.com/.../xyz.jpeg"/>
         </div>
         <div class="form-group">
             <label for="width">Width</label>
             <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="50%"/>
         </div>
-        <div class="form-group">
-            <label for="image">Choose Image</label>
-            <input type="file" class="form-control" id="image" placeholder=""/>
-        </div>
-
-        <a class="btn btn-primary btn-block">Upload Image</a>
     </form>
+    <fieldset ng-disabled="model.flag">
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <input  name="myFile"   type="file" class="form-control"/>
+            <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+            <input  name="userId" value="{{model.userId}}"   style="display: none"/>
+            <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+            <input  name="pageId" value="{{model.pageId}}"   style="display: none"/>
+            <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+            <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        </form>
+    </fieldset>
 </div>

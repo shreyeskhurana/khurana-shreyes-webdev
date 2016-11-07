@@ -3,15 +3,7 @@
         .module("WebAppMaker")
         .factory("WebsiteService", WebsiteService);
 
-    function WebsiteService() {
-        var websites = [
-                { _id: "123", name: "Facebook",    uid: "456" },
-                { _id: "234", name: "Tweeter",     uid: "456" },
-                { _id: "456", name: "Gizmodo",     uid: "456" },
-                { _id: "567", name: "Tic Tac Toe", uid: "123" },
-                { _id: "678", name: "Checkers",    uid: "123" },
-                { _id: "789", name: "Chess",       uid: "234" }
-        ];
+    function WebsiteService($http) {
 
         /**
          * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
@@ -29,47 +21,28 @@
         return api;
 
         function findWebsitesForUser(uid) {
-            var result = [];
-            for(var w in websites) {
-                if(websites[w].uid === uid) {
-                    result.push(websites[w]);
-                }
-            }
-            return result;
+            var url = "/api/user/" + uid + "/website";
+            return $http.get(url);
         }
 
-        /*function findWebsitesForUser(uid) {
-            http.get("/websites");
-        }*/
-
-        function findWebsiteById(wid) {
-            for(var w in websites) {
-                if(websites[w]._id === wid) {
-                    return websites[w];
-                }
-            }
-            return null;
+        function createWebsite(website, uid) {
+            var url = "/api/user/" + uid + "/website";
+            return $http.post(url, website);
         }
 
-        function createWebsite(website) {
-            websites.push(website);
+        function findWebsiteById(uid, wid) {
+            var url = "/api/user/" + uid + "/website/" + wid;
+            return $http.get(url);
         }
 
-        function updateWebsite(website) {
-            for(var w in websites) {
-                if(websites[w]._id === website._id) {
-                    websites[w] = website;
-                }
-            }
+        function updateWebsite(website, uid, wid) {
+            var url = "/api/user/" + uid + "/website/" + wid;
+            return $http.put(url, website);
         }
 
-
-        function removeWebsite(wid) {
-            for(var w in websites) {
-                if(websites[w]._id === wid) {
-                    websites.splice(w, 1);
-                }
-            }
+        function removeWebsite(uid, wid) {
+            var url = "/api/user/" + uid + "/website/" + wid;
+            return $http.delete(url);
         }
 
     }

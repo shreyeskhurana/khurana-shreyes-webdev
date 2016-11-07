@@ -9,23 +9,47 @@
         vm.userId = $routeParams['uid'];
         vm.websiteId = $routeParams['wid'];
         vm.pageId = $routeParams['pid'];
+
         vm.updatePage = updatePage;
         vm.removePage = removePage;
 
         function init() {
-            vm.pages = PageService.findPagesForWebsite(vm.websiteId);
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService
+                .findPagesForWebsite(vm.userId, vm.websiteId)
+                .success(function (pages) {
+                    vm.pages = pages;
+                })
+                .error(function () {
+                })
+
+            PageService
+                .findPageById(vm.userId, vm.websiteId, vm.pageId)
+                .success(function (page) {
+                    vm.page = page;
+                })
+                .error(function () {
+                })
         }
         init();
 
         function updatePage(page) {
-            PageService.updatePage(page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .updatePage(page, vm.userId, vm.websiteId, vm.pageId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+                })
         }
 
-        function removePage(pid) {
-            PageService.removePage(pid);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+        function removePage() {
+            PageService
+                .removePage(vm.userId, vm.websiteId, vm.pageId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+                })
         }
     }
 })();
