@@ -12,13 +12,14 @@
             var promise = UserService.login(username, password);
             promise
                 .success(function(user) {
-                    if(user === '0') {
-                        vm.error = "Username or Password is incorrect";
-                    } else {
+                    if(user) {
                         $location.url("/user/" + user._id);
+                    } else {
+                        vm.error = "Something went wrong!";
                     }
                 })
                 .error(function(error) {
+                    vm.error = "Username or Password is incorrect";
                 });
         }
     }
