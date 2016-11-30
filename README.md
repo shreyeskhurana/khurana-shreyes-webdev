@@ -2,14 +2,14 @@ CS 5610 Web Development
 
 Northeastern University
 
-1. Assignments
+Assignment
 
-1.1. User Interface Development
+    1. User Interface Development
+    2. Client Side Development
+    3. Server Side Development
+    4. Database Development
+    5. Security & User Management
 
-1.2.Client Side Development
-
-
-2. Project
-
+Project
 
 Shreyes Khurana
