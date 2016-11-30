@@ -5,6 +5,12 @@
 
     function Config($routeProvider) {
         $routeProvider
+            .when("/admin", {
+                templateUrl: 'views/admin/user-list.view.client.html',
+                resolve: {
+                    checkAdmin: checkAdmin
+                }
+            })
             .when('/login', {
                 templateUrl: 'views/user/login.view.client.html',
                 controller: 'LoginController',
@@ -15,10 +21,21 @@
                 controller: 'RegisterController',
                 controllerAs: 'model'
             })
+            .when('/user', { /* profile */
+                templateUrl: 'views/user/profile.view.client.html',
+                controller: 'ProfileController',
+                controllerAs: 'model',
+                resolve: {
+                    checkLogin: checkLogin  //could be asynchronus, look implementation below
+                }
+            })
             .when('/user/:uid', { /* profile */
                 templateUrl: 'views/user/profile.view.client.html',
                 controller: 'ProfileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    checkLogin: checkLogin  //could be asynchronus, look implementation below
+                }
             })
             //-----------------------------------------------------------
 
@@ -82,7 +99,7 @@
                             .findWidgetById($routeParams.uid, $routeParams.wid, $routeParams.pid, $routeParams.wgid)
                             .success(function (widget) {
                                 return widget;
-                            })
+                            });
                     }]
                 }
             })
@@ -90,6 +107,44 @@
 
             .otherwise({
                 redirectTo: '/login'
-            })
+            });
+        
+        function checkLogin($q, UserService, $location) {
+            var deferred = $q.defer(); //$q allows to synchronize things which otherwise be asynchronus
+            UserService
+                .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        }
+                        else {
+                            deferred.reject('0');
+                            $location.url('/login');
+                        }
+                    }
+                );
+
+            return deferred.promise;
+        }
+
+        function checkAdmin($q, UserService, $location) {
+            var deferred = $q.defer(); //$q allows to synchronize things which otherwise be asynchronus
+            UserService
+                .checkAdmin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        }
+                        else {
+                            deferred.reject('0');
+                            $location.url('/login');
+                        }
+                    }
+                );
+
+            return deferred.promise;
+        }
     }
 })();

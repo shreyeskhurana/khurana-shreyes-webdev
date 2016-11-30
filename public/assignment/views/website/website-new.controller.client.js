@@ -21,14 +21,13 @@
         init();
 
         function createWebsite(website) {
-            website._id = ((new Date()).getTime() % 1000).toString();
-            website.uid = vm.userId;
-
             WebsiteService
                 .createWebsite(website, vm.userId)
                 .success(function () {
                     $location.url("/user/" + vm.userId + "/website");
                  })
+                .error(function () {
+                });
         }
     }
 })();

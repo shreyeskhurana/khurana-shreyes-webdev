@@ -17,7 +17,7 @@
                     vm.widgetTypes = widgetTypes;
                 })
                 .error(function () {
-                })
+                });
         }
         init();
     }

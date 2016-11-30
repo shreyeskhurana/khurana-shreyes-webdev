@@ -4,51 +4,59 @@
         .factory("UserService", UserService);
 
     function UserService($http) {
-
-        /**
-         * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
-         *      RATHER THAN THE ASSIGNMENT DOCUMENT'S.
-         * Thanks!
-         */
-
         var api = {
-            findUserByCredentials : findUserByCredentials,
-            findUserById : findUserById,
+            login: login,
+            checkLogin: checkLogin,
+            checkAdmin: checkAdmin,
+            logout: logout,
             findUsername : findUsername,
+            findUserByCredentials : findUserByCredentials,
+            findCurrentUser: findCurrentUser,
             createUser : createUser,
+            findUserById : findUserById,
+            findCurrentUser : findCurrentUser,
             updateUser : updateUser,
             unregisterUser : unregisterUser
         };
         return api;
 
-        function findUserByCredentials(username, password) {
-            /*for(var u in users) {
-                user = users[u];
-                if(user.username === username
-                    && user.password === password) {
-                    return user;
-                }
-            }
-            return null;*/
-            var url = '/api/user?username=' + username + '&password=' + password;
+        function checkLogin() {
+            return $http.post("/api/checkLogin");
+        }
+
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
+        }
+
+        function login(username, password) {
+            var user = {
+                username: username,
+                password: password
+            };
+
+            return $http.post("/api/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function findCurrentUser() {
+            var url = "/api/user";
             return $http.get(url);
         }
 
         function findUsername(username) {
-            /*for(var u in users) {
-             user = users[u];
-             if(user.username === username) {
-             return user;
-             }
-             }
-             return null;*/
             var url = '/api/user?username=' + username;
             return $http.get(url);
         }
 
+        function findUserByCredentials(username, password) {
+            var url = '/api/user?username=' + username + '&password=' + password;
+            return $http.get(url);
+        }
+
         function createUser(newUser) {
-            /*users.push(newUser);
-            */
             var url = '/api/user/';
             return $http.post(url, newUser);
         }

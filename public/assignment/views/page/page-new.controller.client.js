@@ -14,24 +14,21 @@
         function init() {
             PageService
                 .findPagesForWebsite(vm.userId, vm.websiteId)
-                .success(function (pages) {
+                .success(function(pages) {
                     vm.pages = pages;
                 })
                 .error(function () {
-                })
+                });
         }
         init();
 
         function createPage(page) {
-            page._id = ((new Date()).getTime() % 1000).toString();
-            page.wid = vm.websiteId;
-
             PageService
                 .createPage(page, vm.userId, vm.websiteId)
-                .success(function () {
+                .success(function(page) {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
                 })
-                .error(function () {
+                .error(function() {
                 });
         }
     }

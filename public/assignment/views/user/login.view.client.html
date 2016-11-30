@@ -15,7 +15,8 @@
                    placeholder="alice1"/>
 
             <label for="password">Password</label>
-            <input type="password"
+            <input ng-enter="model.login(model.username, model.password)"
+                   type="password"
                    ng-model="model.password"
                    class="form-control"
                    id="password"
@@ -27,6 +28,10 @@
             </a>
             <a class="btn btn-success btn-block" href="#/register">
                 Register
+            </a>
+            <a href="/auth/google" class="btn btn-danger btn-block">
+                <span class="fa fa-google-plus"></span><!--font awesome-->
+                Google
             </a>
         </div>
     </form>

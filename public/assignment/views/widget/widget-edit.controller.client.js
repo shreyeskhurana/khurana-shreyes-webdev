@@ -14,7 +14,7 @@
         widget = widget.data;
 
         vm.widget = widget;
-        vm.type = widget.widgetType.toLowerCase();
+        vm.type = widget.type.toLowerCase();
 
         /* function init() {
             WidgetService
@@ -33,21 +33,21 @@
         function updateWidget() {
             WidgetService
                 .updateWidget(vm.widget, vm.userId, vm.websiteId, vm.pageId, vm.widgetId)
-                .success(function () {
+                .success(function() {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                 })
-                .error(function () {
+                .error(function() {
                 });
         }
 
         function removeWidget() {
             WidgetService
                 .removeWidget(vm.userId, vm.websiteId, vm.pageId, vm.widgetId)
-                .success(function () {
+                .success(function() {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                 })
-                .error(function () {
-                })
+                .error(function() {
+                });
         }
     }
 })();

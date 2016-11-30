@@ -1,8 +1,9 @@
 <div>
     <form>
         <div class="form-group">
-            <label for="text">Text</label>
-            <textarea class="form-control" id="text" placeholder="Text goes here..."></textarea>
+            <label for="description">Description</label>
+            <textarea ng-model="model.widget.description" class="form-control" id="description"
+                      placeholder="Text goes here..."></textarea>
         </div>
         <div class="form-group">
             <label for="url">URL</label>
@@ -25,4 +26,7 @@
             <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
         </form>
     </fieldset>
+    <div ng-show="model.flag">
+        <i>Uploads can happen after this is created.</i>
+    </div>
 </div>

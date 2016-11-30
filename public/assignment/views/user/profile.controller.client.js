@@ -9,10 +9,12 @@
 
         vm.updateUser = updateUser;
         vm.unregisterUser = unregisterUser;
+        vm.logout = logout;
 
         function init() {
             UserService
-                .findUserById(userId)
+                //.findUserById(userId)
+                .findCurrentUser()
                 .success(function(user) {
                     if(user != "0") {
                         vm.user = user;
@@ -23,14 +25,26 @@
         }
         init();
 
+        function logout() {
+            UserService
+                .logout()
+                .success(
+                    function () {
+                        $location.url("/login");
+                    }
+                )
+                .error(function () {
+                });
+        }
+
         function updateUser() {
             UserService
-                .updateUser(vm.user, userId);
+                .updateUser(vm.user, vm.user._id);
         }
 
         function unregisterUser() {
             UserService
-                .unregisterUser(userId)
+                .unregisterUser(vm.user._id)
                 .success(function() {
                     $location.url("/login")
                 })

@@ -11,16 +11,11 @@
         vm.pageId = $routeParams.pid;
         vm.wgType= $routeParams.type.toLowerCase();
 
-        var type = vm.wgType.toUpperCase();
-        vm.widget = {wgType: type, text:"Default text"};
+        vm.widget = {name: "Default text", type: vm.wgType.toUpperCase()};
 
         vm.createWidget = createWidget;
 
         function createWidget() {
-            vm.widget.widgetType = vm.wgType.toUpperCase();
-            vm.widget._id = ((new Date()).getTime() % 1000).toString();
-            vm.widget.pageId = vm.pid;
-
             WidgetService
                 .createWidget(vm.widget, vm.userId, vm.websiteId, vm.pageId)
                 .success(function () {

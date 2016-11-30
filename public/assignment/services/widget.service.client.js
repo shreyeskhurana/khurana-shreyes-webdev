@@ -4,16 +4,9 @@
         .factory("WidgetService", WidgetService);
 
     function WidgetService($http) {
-
-        /**
-         * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
-         *      RATHER THAN THE ASSIGNMENT DOCUMENT'S.
-         * Thanks!
-         */
-
         var api = {
-            findWidgetsForPage : findWidgetsForPage,
             createWidget : createWidget,
+            findWidgetsForPage : findWidgetsForPage,
             findWidgetById : findWidgetById,
             updateWidget : updateWidget,
             removeWidget : removeWidget,
@@ -57,7 +50,6 @@
             url = url
                 .replace("START", start)
                 .replace("END", end);
-
             $http.put(url);
         }
     }

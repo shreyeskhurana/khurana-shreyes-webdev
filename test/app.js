@@ -4,28 +4,30 @@ module.exports = function(app)
     app.post("/api/test", createMessage);
     app.delete("/api/test/:id", deleteMessage);
 
-    var connectionString = 'mongodb://127.0.0.1:27017/test';
+    /*var connectionString = 'mongodb://127.0.0.1:27017/test';
 
-    if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-        connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-            process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-            process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-            process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-            process.env.OPENSHIFT_APP_NAME;
-    }
+    if(process.env.MLAB_USERNAME) {
+        var username = process.env.MLAB_USERNAME;
+        var password = process.env.MLAB_PASSWORD;
+        connectionString = "mongodb://"+ username + ":" + password +
+            "@ds149577.mlab.com:49577/mlabs_mongodb_webdev";
+    }*/
 
-    var mongoose = require("mongoose");
-    mongoose.connect(connectionString);
+    var connectionString = "mongodb://shreyes:12345678@ds149577.mlab.com:49577/mlabs_mongodb_webdev";
 
-    var TestSchema = mongoose.Schema({
+    var mongoose = require("mongoose");     //npm install mongoose --save
+    mongoose.connect(connectionString);     //connecting to a database
+
+    var TestSchema = mongoose.Schema({      //instances of the records
         message: String
-    });
+    },{collection: 'messages'});
 
-    var TestModel = mongoose.model("TestModel", TestSchema);
+    var TestModel = mongoose.model("TestModel", TestSchema); //model should match this schema
 
     function findAllMessages(req, res) {
         TestModel
-            .find()
+            .find() //read all operation, one of the raw functions mongo allows you to invoke
+            //equivalent of select * from messages.
             .then(
                 function(tests) {
                     res.json(tests);

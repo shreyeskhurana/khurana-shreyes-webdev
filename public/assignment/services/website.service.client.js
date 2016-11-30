@@ -4,13 +4,6 @@
         .factory("WebsiteService", WebsiteService);
 
     function WebsiteService($http) {
-
-        /**
-         * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
-         *      RATHER THAN THE ASSIGNMENT DOCUMENT'S.
-         * Thanks!
-         */
-
         var api = {
             findWebsitesForUser : findWebsitesForUser,
             findWebsiteById : findWebsiteById,
@@ -44,6 +37,5 @@
             var url = "/api/user/" + uid + "/website/" + wid;
             return $http.delete(url);
         }
-
     }
 })();

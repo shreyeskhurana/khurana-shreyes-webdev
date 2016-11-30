@@ -24,11 +24,10 @@
                             vm.error = "Username already exists!";
                         }
                         else {
-                            newUser._id = ((new Date()).getTime() % 1000).toString();
                             UserService
                                 .createUser(newUser)
-                                .success(function() {
-                                    $location.url("/user/" + newUser._id);
+                                .success(function(user) {
+                                    $location.url("/user/" + user._id);
                                 })
                                 .error(function(error) {
                                 });

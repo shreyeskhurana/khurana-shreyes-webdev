@@ -23,24 +23,35 @@
 </nav>
 
 <div sortable class="container">
-    <div class="parent" ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" align="center">
+    <div class="parent" ng-switch="widget.type" ng-repeat="widget in model.widgets" align="center">
         <div ng-switch-when="HEADER" ng-switch="widget.size">
-            <h1 ng-switch-when="1">{{widget.text}}</h1>
-            <h2 ng-switch-when="2">{{widget.text}}</h2>
-            <h3 ng-switch-when="3">{{widget.text}}</h3>
-            <h4 ng-switch-when="4">{{widget.text}}</h4>
-            <h5 ng-switch-when="5">{{widget.text}}</h5>
-            <h6 ng-switch-when="6">{{widget.text}}</h6>
-            <h6 ng-switch-default>{{widget.text}}</h6>
+            <h1 ng-switch-when="1">{{widget.name}}</h1>
+            <h2 ng-switch-when="2">{{widget.name}}</h2>
+            <h3 ng-switch-when="3">{{widget.name}}</h3>
+            <h4 ng-switch-when="4">{{widget.name}}</h4>
+            <h5 ng-switch-when="5">{{widget.name}}</h5>
+            <h6 ng-switch-when="6">{{widget.name}}</h6>
+            <h6 ng-switch-default> {{widget.name}}</h6>
         </div>
         <div ng-switch-when="IMAGE">
             <img ng-src="{{widget.url}}" width="{{widget.width}}">
         </div>
         <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)"></div>
-        <div ng-switch-when="YOUTUBE" class="embed-responsive embed-responsive-4by3">
-            <iframe class="embed-responsive-item" width="{{widget.width}}" height="{{widget.height}}"
+        <div ng-switch-when="YOUTUBE" class="youtube-widget">
+            <iframe width="{{widget.width}}" height="{{widget.height}}"
                     ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}"
                     frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div ng-switch-when="INPUT">
+            <div ng-if="widget.formatted" text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                    ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                    ['indent','outdent'],['html']]" ng-model="widget.text"></div>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)" value="{{widget.text}}"
+                   placeholder="{{widget.placeholder}}" class="form-control"/>
+            <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
         </div>
         <div class="icons">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"

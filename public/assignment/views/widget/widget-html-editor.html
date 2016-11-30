@@ -1,9 +1,13 @@
 <div>
     <form>
-        <div class="form-group">
+        <div class="form-group" ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                ['indent','outdent'],['html']]">
             <label for="text">Text</label>
             <textarea ng-model="model.widget.text" class="form-control" id="text" placeholder="Text goes here...">
             </textarea>
         </div>
-        </form>
+    </form>
 </div>

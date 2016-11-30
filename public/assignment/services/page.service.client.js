@@ -4,13 +4,6 @@
         .factory("PageService", PageService);
 
     function PageService($http) {
-
-        /**
-         * NOTE: I HAVE USED LECTURE's NAMING CONVENTION
-         *      RATHER THAN THE ASSIGNMENT DOCUMENT'S.
-         * Thanks!
-         */
-
         var api = {
             findPagesForWebsite : findPagesForWebsite,
             findPageById : findPageById,
