@@ -7,21 +7,15 @@ module.exports = function(app, model) {
     var session          = require('express-session');
     var bcrypt           = require("bcrypt-nodejs");
     var facebookConfig = {
-        // clientID     : process.env.FACEBOOK_CLIENT_ID,
-        // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        // callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-        clientID     : "1799432180320267",
-        clientSecret : "d4518f4f398c20f15c1349852bcf177d",
-        callbackURL  : 'http://localhost:3000/auth/facebook/callback'
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
     var googleConfig    = {
-        // clientID     : process.env.GOOGLE_CLIENT_ID,        //public key
-        // clientSecret : process.env.GOOGLE_CLIENT_SECRET,    //private key
-        // callbackURL  : process.env.GOOGLE_CALLBACK_URL      //what url would be listening once we get a callback
-        //make process env variables using bash profile exports/bash/
-        clientID     : "833689752885-dn2mr0u7nmnc98lppv5n7qb79rman7e0.apps.googleusercontent.com",
-        clientSecret : "miVwKWn2sWi-QdWVmNAOb--t",
-        callbackURL  : 'http://localhost:3000/auth/google/callback'
+        clientID     : process.env.GOOGLE_CLIENT_ID,        //public key
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,    //private key
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL      //what url would be listening once we get a callback
+        //make process env variables using bash profile exports/bash//google/callback'
     };
 
     passport.use(new LocalStrategy(localStrategy));
