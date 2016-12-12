@@ -8,8 +8,8 @@ module.exports = function() {
 
     var UserSchema = mongoose.Schema({      //instances of the records
         username: {type: String, required: true},
-        password: {type: String, required: true},
-        first: {type: String, required: true},
+        password: {type: String},
+        first: {type: String},
         last: String,
         email: String,
         phone: String,
@@ -17,18 +17,14 @@ module.exports = function() {
             id: String,
             token: String
         },
+        facebook: {
+            id:    String,
+            token: String
+        },
         role: {type: String, enum: ['ADMIN', 'STUDENT', 'FACULTY'], default: 'STUDENT'},
         websites: [{type: mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}],
         posted: {type: Date, default: Date.now}
     }, {collection: 'user'});
-
-    /*var user = {
-        username: 'alice',
-        websites: [
-             {_id: "123", name: "facebook.com"},
-             {_id: "123", name: "facebook.com"}
-        ]
-    };*/
 
     return UserSchema;
 };

@@ -11,7 +11,6 @@
             logout: logout,
             findUsername : findUsername,
             findUserByCredentials : findUserByCredentials,
-            findCurrentUser: findCurrentUser,
             createUser : createUser,
             findUserById : findUserById,
             findCurrentUser : findCurrentUser,

@@ -8,12 +8,13 @@ module.exports = function() {
         setModel: setModel,
         createUser: createUser,
         findUserById: findUserById,
-        findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         findUserByGoogleId: findUserByGoogleId,
-        updateUser: updateUser,
+        findUserByFacebookId: findUserByFacebookId,
+        findUserByUsername: findUserByUsername,
+        findWebsitesForUser: findWebsitesForUser,
         removeUser: removeUser,
-        findWebsitesForUser: findWebsitesForUser
+        updateUser: updateUser
     };
     return api;
 
@@ -30,6 +31,11 @@ module.exports = function() {
             .findOne({
                 "google.id": googleId
             });
+    }
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel
+            .findOne({'facebook.id': facebookId});
     }
 
     function findUserByUsername(username) {

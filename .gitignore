@@ -2,3 +2,6 @@
 node_modules
 .idea
 public/ubuntu@ec2-54-174-137-236.compute-1.amazonaws.com
+public/bower_components/
+public/project/*
+project/*

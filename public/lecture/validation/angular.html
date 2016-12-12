@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ValidationApp">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="../app.js"></script>
+    <title>Title</title>
+
+    <style>
+        .ng-submitted.ng-invalid {
+            background-color: red;
+        }
+        .ng-submitted .ng-invalid {
+            background-color: indianred;
+        }
+        form {
+            padding: 10px;
+        }
+        .error {
+            color: orangered;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid" ng-controller="ValidationController as model">
+        <h1>Native form validation</h1>
+        <form name="form1" novalidate>
+            <input  name="username"
+                    type="text"
+                    ng-model="model.username"
+                    class="form-control"
+                    required/>
+            <div ng-show="form1.username.$invalid" class="error">Some name error</div>
+            <input name="email"
+                   type="email"
+                   ng-model="model.email"
+                   class="form-control"/>
+            <div ng-show="form1.email.$invalid" class="error">Some email error</div>
+            <button type="submit"
+                    class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
