@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+    <% include commons/header.ejs %>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+    <%  var hello = "Hello!"; %>
+    <%= hello %>
+
+    <p>
+        Instructor: <%= instructor%>
+    </p>
+    <ul>
+        <% for(var c in courses) { %>
+        <li>
+            <%= courses[c].name %>
+        </li>
+        <% } %>
+    </ul>
+</body>
+</html>

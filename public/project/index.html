@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="eMarketApp">
 <head>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/theme.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Z5nCSAvbngRJ9xlIoFWLnDyXFf5_jZc"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script><!--For Navigation-->
+
+    <script type='text/javascript' src='../js//ng-infinite-scroll.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
+    <script src="views/search/search.controller.client.js"></script>
+    <script src="views/details/details.controller.client.js"></script>
+    <script src="views/details/personal-items.controller.client.js"></script>
+    <script src="views/sell/sell-list.controller.client.js"></script>
+    <script src="views/sell/sell-new.controller.client.js"></script>
+    <script src="views/sell/sell-edit.controller.client.js"></script>
+    <script src="views/social/social-list.controller.client.js"></script>
+    <script src="views/social/social-details.controller.client.js"></script>
+    <script src="views/social/follow.controller.client.js"></script>
+    <script src="views/social/follow-details.controller.client.js"></script>
+    <script src="views/admin/item-edit.controller.client.js"></script>
+    <script src="views/admin/item-list.controller.client.js"></script>
+    <script src="views/admin/user-edit.controller.client.js"></script>
+    <script src="views/admin/user-list.controller.client.js"></script>
+    <script src="views/details/single-details.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/item.service.client.js"></script>
+    <script src="services/social.service.client.js"></script>
+    <script src="services/admin.service.client.js"></script>
+
+    <title>Project Home</title>
 </head>
 <body>
-    <h1>Project Home Page</h1>
+    <div id="formap" ng-view></div>
 </body>
 </html>

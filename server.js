@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require("./project/app")(app);
-
+//require("./assignment/app")(app);
 //require("./ejs/forms/app")(app);
 //require("./wax/app.js")(app);
 
